@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Layout from './components/layout';
+import Pass from './components/pass';
+import AddTodo from './components/add-todo';
+import ListTodo from './components/list-todo';
+import { TodoProvider } from './provider/todo-provider';
+import './main.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+
+    return (
+        <TodoProvider>
+            <Layout>
+                <Pass>
+                    <AddTodo />
+                </Pass>
+                <Pass>
+                    <ListTodo />
+                </Pass>
+            </Layout>
+        </TodoProvider>
+    );
 }
 
 export default App;

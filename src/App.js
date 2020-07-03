@@ -1,24 +1,29 @@
-import React from "react";
-import Layout from './components/layout';
-import Pass from './components/pass';
-import AddTodo from './components/add-todo';
-import ListTodo from './components/list-todo';
-import { TodoProvider } from './provider/todo-provider';
-import './main.css';
+import React, {useState} from "react";
+import { AddTask } from './AddTask';
+import { Tasks } from "./Tasks";
+import './main.scss';
 
 const App = () => {
+    const [tasks, setTasks] = useState([
+        { name: 'Get up early' },
+        { name: 'Have a breakfast' },
+        { name: 'Go to work' },
+    ]);
+
+    const createTask = (name) => {
+        setTasks([...tasks, {name}])
+    }
+
+    const deleteTask = (name) => {
+        // ....
+    }
 
     return (
-        <TodoProvider>
-            <Layout>
-                <Pass>
-                    <AddTodo />
-                </Pass>
-                <Pass>
-                    <ListTodo />
-                </Pass>
-            </Layout>
-        </TodoProvider>
+        <>
+            <h1>TODO APPLICATION</h1>
+            <AddTask createTask={createTask} />
+            <Tasks tasks={tasks} deleteTask={deleteTask}/>
+        </>
     );
 }
 

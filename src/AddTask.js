@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { TodoContext } from "./TodoContextProvider";
 
 export const AddTask = (props) => {
+    const { createTask } = useContext(TodoContext);
     const [val, setVal] = useState('');
 
     const handleChange = (e) => {
@@ -8,7 +10,7 @@ export const AddTask = (props) => {
     }
 
     const createNewTask = () => {
-        props.createTask(val)
+        createTask(val)
         setVal('')
     }
 

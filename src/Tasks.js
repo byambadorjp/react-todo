@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { Task } from './Task'
+import { TodoContext } from "./TodoContextProvider";
 
-export const Tasks = (props) => {
-    
+export const Tasks = () => {
+
+    const { tasks } = useContext(TodoContext);
+
     return (
         <>
             <div>
                 {
-                    props.tasks.map((item, index) =>
+                    tasks.map((item, index) =>
                         <Task key={index} name={item.name} />
                     )
                 }

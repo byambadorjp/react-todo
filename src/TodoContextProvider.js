@@ -1,4 +1,5 @@
 import React, { useState, createContext } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 export const TodoContext = createContext({
     task: [],
@@ -7,13 +8,13 @@ export const TodoContext = createContext({
 });
 
 export const TodoContextProvider = ({children}) => {
-    const [tasks,setTasks] = useState([{name: 'test'}, {name: 'task2'}])
+    const [tasks,setTasks] = useState([])
 
     const createTask = (name) => {
-        setTasks([...tasks, {name}])
+        setTasks([...tasks, {id: uuidv4(), name}])
     }
-    const deleteTask = (name) => {
-        setTasks(tasks.filter((task) => task.name !== name))
+    const deleteTask = (id) => {
+        setTasks(tasks.filter((task) => task.id !== id))
     };
 
     return (
